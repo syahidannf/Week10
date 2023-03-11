@@ -31,8 +31,8 @@ class MovieController {
 
   static updateMovie = async (req, res, next) => {
     try {
-      const { id } = req.params;
-      // belum selesai
+      const data = await MovieServices.updateMovies(req.body, next);
+      res.status(201).json(data);
     } catch (err) {
       next(err);
     }

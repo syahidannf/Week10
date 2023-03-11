@@ -1,5 +1,4 @@
 const pool = require("../config/config.js");
-const { deleteMovie } = require("../controllers/movieController.js");
 
 class Movies {
   static getMovies = async (next) => {
@@ -56,6 +55,15 @@ class Movies {
 
   static updateMovies = async (params, next) => {
     try {
+      const updateQuery = ` 
+        UPDATE movies
+        set id = $1
+            title = $2
+            genres = $3
+            year = $4
+      `;
+      pool.query(updateQuery, [id, title, genres, year]);
+      return data.row;
     } catch (err) {
       next(err);
     }

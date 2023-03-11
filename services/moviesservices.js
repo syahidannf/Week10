@@ -1,4 +1,3 @@
-const Movies = require("../models/movies.js");
 const MovieRepository = require("../repositories/moviesrepository.js");
 
 class MovieServices {
@@ -22,7 +21,7 @@ class MovieServices {
 
   static createMovies = async (params, next) => {
     try {
-      const data = await Movies.createMovies(params, next);
+      const data = await MoviesRepository.createMovies(params, next);
     } catch (err) {
       next(err);
     }
@@ -30,6 +29,7 @@ class MovieServices {
 
   static updateMovies = async (params, next) => {
     try {
+      const data = await MoviesRepository.updateMovies(params, next);
     } catch (err) {
       next(err);
     }

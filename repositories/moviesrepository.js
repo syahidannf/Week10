@@ -1,5 +1,4 @@
 const Movies = require("../models/movies");
-const { param } = require("../routes");
 
 class MovieRepository {
   static findMovies = async (next) => {
@@ -22,6 +21,15 @@ class MovieRepository {
 
   static createMovies = async (params, next) => {
     try {
+      const data = await Movies.createMovies(params, next);
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  static updateMovies = async (params, next) => {
+    try {
+      const data = await Movies.updateMovies(params, next);
     } catch (err) {
       next(err);
     }
